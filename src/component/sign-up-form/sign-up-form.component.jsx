@@ -32,12 +32,16 @@ const SignUpForm = () => {
     if (password !== confirmPassword) return alert('Password not match')
 
     try {
+      resetFormFields()
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
       console.log(user)
       await createUserDocumentFromAuth(user, { displayName })
-      resetFormFields()
     } catch (err) {
-      console.log(err)
+      if (err.code === 'auth/email-already-in-use') {
+        alert('Cannot create user, email already in use')
+      } else {
+        console.log('user creation encountered an error', err)
+      }
     }
   }
   return (
