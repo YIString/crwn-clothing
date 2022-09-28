@@ -3,9 +3,11 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils'
+
 import FormInput from '../form-input/form-input.component'
-import './sign-up.style.scss'
 import Button from '../button/button.component'
+
+import './sign-up.style.scss'
 const defaultFormFields = {
   displayName: '',
   email: '',
@@ -17,6 +19,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
 
   const { displayName, email, password, confirmPassword } = formFields
+
   console.log(formFields)
   //初始化表单 使用userState方法将字符设为默认值的空串
   const resetFormFields = () => {
@@ -34,7 +37,7 @@ const SignUpForm = () => {
     try {
       resetFormFields()
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
-      console.log(user)
+
       await createUserDocumentFromAuth(user, { displayName })
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {

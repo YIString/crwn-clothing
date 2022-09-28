@@ -7,6 +7,7 @@ import {
 import FormInput from '../form-input/form-input.component'
 import './sign-in.style.scss'
 import Button from '../button/button.component'
+
 const defaultFormFields = {
   email: '',
   password: '',
@@ -14,17 +15,17 @@ const defaultFormFields = {
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
-
   const { email, password } = formFields
-  console.log(formFields)
+
   //初始化表单 使用userState方法将字符设为默认值的空串
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
   }
 
+ 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup()
-    await createUserDocumentFromAuth(user)
+    await signInWithGooglePopup()
+    
   }
 
   const handleChange = (event) => {
@@ -36,8 +37,8 @@ const SignInForm = () => {
 
     try {
       resetFormFields()
-      const response = await signInAuthUserWithEmailAndPassword(email, password)
-      console.log(response)
+      const { user } = await signInAuthUserWithEmailAndPassword(email, password)
+      console.log(user)
     } catch (err) {
       console.log(err)
       switch (err.code) {
