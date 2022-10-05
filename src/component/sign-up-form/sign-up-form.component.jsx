@@ -7,7 +7,7 @@ import {
 import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
 
-import './sign-up.style.scss'
+import { SignUpContainer } from './sign-up.style'
 const defaultFormFields = {
   displayName: '',
   email: '',
@@ -20,7 +20,6 @@ const SignUpForm = () => {
 
   const { displayName, email, password, confirmPassword } = formFields
 
-  console.log(formFields)
   //初始化表单 使用userState方法将字符设为默认值的空串
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
@@ -48,7 +47,7 @@ const SignUpForm = () => {
     }
   }
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -89,7 +88,7 @@ const SignUpForm = () => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   )
 }
 export default SignUpForm

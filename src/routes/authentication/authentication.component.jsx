@@ -3,7 +3,7 @@
 
 import SignUpForm from '../../component/sign-up-form/sign-up-form.component'
 import SignInForm from '../../component/sign-in-form/sign-in.component'
-import './authentication.style.scss'
+import { AuthenticationContainer } from './authentication.style'
 
 //import { useState } from 'react'
 const Authentication = () => {
@@ -20,10 +20,10 @@ const Authentication = () => {
   // }
 
   return (
-    <div className="authentication-container">
+    <AuthenticationContainer>
       <SignInForm />
       <SignUpForm />
-    </div>
+    </AuthenticationContainer>
   )
 }
 
