@@ -1,6 +1,6 @@
-# Getting Review
+# Preview
 
-This project was build with  React (https://endearing-wisp-d15cda.netlify.app).
+https://endearing-wisp-d15cda.netlify.app
 
 
 
